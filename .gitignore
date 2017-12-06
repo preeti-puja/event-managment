@@ -15,3 +15,9 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+log/*.log
+tmp/**/*
+public/assets
+config/database.yml
+config/secrets.yml
+.capistrano/
