@@ -1,0 +1,9 @@
+<h1>New EvENT</h1>
+<%= form_for @project do |f| %>
+  <p> 
+    Name: <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Create Project' %>
+  </p>
+<% end %>

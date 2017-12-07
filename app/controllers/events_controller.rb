@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def new
     @event = Event.new
+    @event.tasks.new
   end
 
   def index
@@ -8,10 +9,10 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.new(event_params)
     if @event.save
       flash[:notice] = "Event successfully created"
-      redirect_to events_path
+      redirect_to @events
     else
       render 'new'
     end
@@ -41,6 +42,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name)
+    params.require(:event).permit(:name,  tasks_attributes: [:id, :name, :_destroy])
   end
 end
